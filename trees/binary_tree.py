@@ -18,11 +18,11 @@ class BinaryTree(object):
     # Helper function to print the tree in the specified traversal type order
     def print_tree(self, traversal_type):
         if traversal_type == "preorder":
-            return self.preorder(tree.root, "")
+            return self.preorder(self.root, "")
         elif traversal_type == "inorder":
-            return self.inorder(tree.root, "")
+            return self.inorder(self.root, "")
         elif traversal_type == "postorder":
-            return self.postorder(tree.root, "")
+            return self.postorder(self.root, "")
         else:
             print("Traversal type " + str(traversal_type) + " is not supported.")
             return False
