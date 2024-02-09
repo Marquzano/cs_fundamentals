@@ -19,6 +19,10 @@ class BinaryTree(object):
     def print_tree(self, traversal_type):
         if traversal_type == "preorder":
             return self.preorder(tree.root, "")
+        elif traversal_type == "inorder":
+            return self.inorder(tree.root, "")
+        elif traversal_type == "postorder":
+            return self.postorder(tree.root, "")
         else:
             print("Traversal type " + str(traversal_type) + " is not supported.")
             return False
@@ -33,6 +37,21 @@ class BinaryTree(object):
             traversal = self.preorder(start.right, traversal)
         return traversal
 
+    def inorder(self, start, traversal):
+        """LEFT -> ROOT -> RIGHT"""
+        if start:
+            traversal = self.inorder(start.left, traversal)
+            traversal += (str(start.value) + "-")
+            traversal = self.inorder(start.right, traversal)
+        return traversal
+    
+    def postorder(self, start, traversal):
+        """RIGHT -> LEFT -> ROOT"""
+        if start:
+            traversal = self.postorder(start.right, traversal)
+            traversal = self.postorder(start.left, traversal)
+            traversal += (str(start.value) + "-")
+        return traversal
 
 # We can begin defining a tree
 # I've opted to doing this in python's IDLE/REPL
